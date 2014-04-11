@@ -88,7 +88,7 @@ public class DocxTemplateProcessor {
                     if (idx > 0) {
 
                         // если верно, то в таблице были "поля".
-                        // нужно удалить templateTr из таблицы (сам объект останется)
+                        // нужно удалить templateTr из таблицы 
                         content.getContent().remove(templateTr);
 
                         // имя коллекции
@@ -223,6 +223,8 @@ public class DocxTemplateProcessor {
             return null;
 
         }
+        
+        Logger.getLogger(this.getClass()).debug("Processing a tag = " + run.getSdtPr().getTag().getVal());
 
         replaceRunProps(run.getSdtContent(), getRunProps(run));
 
@@ -320,7 +322,7 @@ public class DocxTemplateProcessor {
 
                 if (o instanceof Text) {
 
-                    ((Text) o).setValue(val.toString());
+                    ((Text) o).setValue((val == null ? "" : val.toString()));
 
                 }
 
